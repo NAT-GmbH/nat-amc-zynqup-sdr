@@ -1,5 +1,5 @@
 ![NAT GmbH](https://nateurope.com/img/header_logo.jpg)
-# NAT-AMC-ZYNQUP-SDR8
+# NAT-AMC-ZYNQUP-SDR
 ![NAT-AMC-ZYNQUP-SDR8](https://nateurope.com/zoomimg/128.jpg)
 
 N.A.T.’s software defined radio (SDR) unit, the NAT-AMC-ZYNQUP-SDR, is a unified development platform in a ready-to-deploy format, that combines best-in-class hardware with a tailored, comprehensive software package.
@@ -16,5 +16,4 @@ More Information can be found at the [product page](https://nateurope.com/produc
 
 ## Related Documents
 
-[User Guide](https://www.google.com)  
-[Technical Paper Phase Synchronization](https://www.google.com)
+[ADRV9009 Datasheet](https://www.analog.com/media/en/technical-documentation/data-sheets/ADRV9009.pdf)  
