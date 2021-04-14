@@ -31,9 +31,9 @@ Analog Devices, Inc. Transceiver Toolbox
 
 # Parameters
 
-Some parameters configure an individual channel, other an AD9009 chip.  
+Some parameters configure an individual channel, other an ADRV9009 chip.  
 The documentation sets parameters always for adrv9009-phy (RX/TX 1 and 2).
-If you want to set the parameter for a different AD9009 chip, add B to D and the end e.g.
+If you want to set the parameter for a different ADRV9009 chip, add B to D and the end e.g.
 1. CenterFrequencyPhy   
 2. CenterFrequencyPhyB  
 3. CenterFrequencyPhyC
@@ -302,7 +302,7 @@ But on every other Tx channel there will be sine with 40 MHz frequency, because 
 * id: Id of the Attriute (e.g. voltage0)
 * attr: Name of the Attribute (e.g. powerdown)
 * isOutput: Is the Attribute an output or input (e.g. 0 for false)
-* phyDevName: Name of the AD9009 Chip (e.g. adrv9009-phy)
+* phyDevName: Name of the ADRV9009 Chip (e.g. adrv9009-phy)
 
 
 rValue = getAttributeLongLong(id,attr,isOutput,phyDevName)  
