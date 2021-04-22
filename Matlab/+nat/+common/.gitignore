@@ -1,6 +1,0 @@
-*.mlappinstall
-*.mexw64
-*.mex*
-**/slprj/**
-*.m~
-codegen/*

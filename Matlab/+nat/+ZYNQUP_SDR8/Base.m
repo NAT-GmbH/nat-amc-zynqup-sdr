@@ -30,7 +30,7 @@
 %*****************************************************************************
 %*****************************************************************************
 %
-%Copyrigth 2021(c) Gesellschaft fuer Netzwerk- und Automatisierungstechnologie m.b.H (NAT GmbH)
+%Copyright 2021(c) Gesellschaft fuer Netzwerk- und Automatisierungstechnologie m.b.H (NAT GmbH)
 %Copyright 2019(c) Analog Devices, Inc.
 %All rights reserved.
 %
