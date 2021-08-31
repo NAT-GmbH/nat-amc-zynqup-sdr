@@ -1,0 +1,233 @@
+id: nat_amc_zynqup_sdr4_sink
+label: Zynqup SDR4 Sink
+flags: [ python, throttle ]
+
+parameters:
+-   id: uri
+    label: IIO context URI
+    dtype: string
+    default: 'local:'
+
+-   id: samplerate
+    label: Sample Rate
+    dtype: int
+    default: '245760000'
+    options: ['245760000', '30720000', '15360000', '7680000', '3840000', '1920000']
+    option_labels: ['245760000', '30720000', '15360000', '7680000', '3840000', '1920000']
+
+-   id: buffer_size
+    label: Buffer size
+    dtype: int
+    default: 0x8000
+
+-   id: cyclic
+    label: Cyclic
+    dtype: bool
+    default: 'False'
+    options: ['False', 'True']
+    option_labels: ['False', 'True']
+
+
+
+-   id: lo_frequency1
+    category: adrv9009-phy
+    label: LO Frequency
+    dtype: int
+    default: 2400000000
+    hide: part
+
+-   id: tx_qec_en1
+    label: Calibrate TX QEC
+    category: adrv9009-phy
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: tx_lol_en1
+    label: Calibrate TX LOL
+    category: adrv9009-phy
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: tx1_en
+    label: TX1 Enabled
+    category: adrv9009-phy
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+
+-   id: attenuation1
+    label: Attenuation TX1 (dB)
+    category: adrv9009-phy
+    dtype: float
+    default: 30.0
+    hide: part
+
+-   id: quad_tracking1
+    label: Quadrature Tracking TX1
+    category: adrv9009-phy
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: leak_tracking1
+    label: LO Leakage Tracking TX1
+    category: adrv9009-phy
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: tx2_en
+    label: TX2 Enabled
+    category: adrv9009-phy
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+
+-   id: attenuation2
+    label: Attenuation TX2 (dB)
+    category: adrv9009-phy
+    dtype: float
+    default: 30.0
+    hide: part
+
+-   id: quad_tracking2
+    label: Quadrature Tracking TX2
+    category: adrv9009-phy
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: leak_tracking2
+    label: LO Leakage Tracking TX2
+    category: adrv9009-phy
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+
+-   id: lo_frequency2
+    category: adrv9009-phy-b
+    label: LO Frequency
+    dtype: int
+    default: 2400000000
+    hide: part
+
+-   id: tx_qec_en2
+    label: Calibrate TX QEC
+    category: adrv9009-phy-b
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: tx_lol_en2
+    label: Calibrate TX LOL
+    category: adrv9009-phy-b
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: tx3_en
+    label: TX3 Enabled
+    category: adrv9009-phy-b
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+
+-   id: attenuation3
+    label: Attenuation TX3 (dB)
+    category: adrv9009-phy-b
+    dtype: float
+    default: 30.0
+    hide: part
+
+-   id: quad_tracking3
+    label: Quadrature Tracking TX3
+    category: adrv9009-phy-b
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: leak_tracking3
+    label: LO Leakage Tracking TX3
+    category: adrv9009-phy-b
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: tx4_en
+    label: TX4 Enabled
+    category: adrv9009-phy-b
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+
+-   id: attenuation4
+    label: Attenuation TX4 (dB)
+    category: adrv9009-phy-b
+    dtype: float
+    default: 30.0
+    hide: part
+
+-   id: quad_tracking4
+    label: Quadrature Tracking TX4
+    category: adrv9009-phy-b
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: leak_tracking4
+    label: LO Leakage Tracking TX4
+    category: adrv9009-phy-b
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+documentation: |-
+    This is NAT-AMC-ZYNQUP-SDR4 GNURadio sink block for sending signals.
+    More information on how to use this block can be found in the user guide or the Github repository.
+
+inputs:
+-   domain: stream
+    dtype: complex
+    multiplicity: ${ sum([tx1_en, tx2_en, tx3_en, tx4_en]) }
+
+asserts:
+- ${ sum([tx1_en, tx2_en, tx3_en, tx4_en]) > 0 }
+
+templates:
+    imports: import nat
+    make: nat.nat_amc_zynqup_sdr_sink_f32c(${uri}, ${samplerate}, [${tx1_en}, ${tx2_en},${tx3_en}, ${tx4_en}], ${buffer_size}, ${cyclic},[${lo_frequency1},${lo_frequency2}],[${tx_qec_en1},${tx_qec_en2}],[${tx_lol_en1},${tx_lol_en2}], [${attenuation1}, ${attenuation2},${attenuation3}, ${attenuation4}], [${quad_tracking1}, ${quad_tracking2},${quad_tracking3}, ${quad_tracking4}], [${leak_tracking1},${leak_tracking2},${leak_tracking3},${leak_tracking4}])
+    callbacks:
+      - set_params(${samplerate},[${lo_frequency1},${lo_frequency2}],[${tx_qec_en1},${tx_qec_en2}],[${tx_lol_en1},${tx_lol_en2}], [${attenuation1}, ${attenuation2},${attenuation3}, ${attenuation4}], [${quad_tracking1}, ${quad_tracking2},${quad_tracking3}, ${quad_tracking4}], [${leak_tracking1},${leak_tracking2},${leak_tracking3},${leak_tracking4}])
+
+file_format: 1

@@ -1,0 +1,6 @@
+usr/include/*
+usr/lib/*/libgnuradio-nat.so
+usr/lib/*/pkgconfig/*
+usr/lib/python*
+usr/share/gnuradio/grc/blocks/*
+usr/lib/*/cmake

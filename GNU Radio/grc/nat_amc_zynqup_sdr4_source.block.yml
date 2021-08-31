@@ -1,0 +1,243 @@
+id: nat_amc_zynqup_sdr4_source
+label: Zynqup SDR4 Source
+flags: [ python, throttle ]
+
+parameters:
+-   id: uri
+    label: IIO context URI
+    dtype: string
+    default: 'local:'
+
+-   id: samplerate
+    label: Sample Rate
+    dtype: int
+    default: '245760000'
+    options: ['245760000', '30720000', '15360000', '7680000', '3840000', '1920000']
+    option_labels: ['245760000', '30720000', '15360000', '7680000', '3840000', '1920000']
+
+-   id: buffer_size
+    label: Buffer size
+    dtype: int
+    default: 0x8000
+
+-   id: lo_frequency1
+    category: adrv9009-phy
+    label: LO Frequency
+    dtype: int
+    default: 2400000000
+    hide: part
+
+-   id: rx_qec_en1
+    label: Calibrate RX QEC
+    category: adrv9009-phy
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: rx_phase_corr_en1
+    label: Calibrate RX PHASE CORR
+    category: adrv9009-phy
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+
+-   id: gain_mode1
+    label: Gain Mode RX1/2
+    category: adrv9009-phy
+    dtype: string
+    default: "'manual'"
+    options: ["'manual'", "'slow_attack'"]
+    option_labels: ['Manual', 'Slow Attack']
+    hide: part
+
+
+-   id: rx1_en
+    label: RX1 Enabled
+    category: adrv9009-phy
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+
+-   id: gain1
+    label: Gain RX1 (dB)
+    category: adrv9009-phy
+    dtype: float
+    default: 10.0
+    hide: ${ ('part' if (gain_mode1 == 'manual') else 'all') }
+
+-   id: quad_tracking1
+    label: Quadrature Tracking RX1
+    category: adrv9009-phy
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: hd2_tracking1
+    label: HD2 Tracking RX1
+    category: adrv9009-phy
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: rx2_en
+    label: RX2 Enabled
+    category: adrv9009-phy
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+
+-   id: gain2
+    label: Gain RX2 (dB)
+    category: adrv9009-phy
+    dtype: float
+    default: 10.0
+    hide: ${ ('part' if (gain_mode1 == 'manual') else 'all') }
+
+-   id: quad_tracking2
+    label: Quadrature Tracking RX2
+    category: adrv9009-phy
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: hd2_tracking2
+    label: HD2 Tracking RX2
+    category: adrv9009-phy
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: lo_frequency2
+    category: adrv9009-phy-b
+    label: LO Frequency
+    dtype: int
+    default: 2400000000
+    hide: part
+
+-   id: rx_qec_en2
+    label: Calibrate RX QEC
+    category: adrv9009-phy-b
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: rx_phase_corr_en2
+    label: Calibrate RX PHASE CORR
+    category: adrv9009-phy-b
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: gain_mode2
+    label: Gain Mode RX3/4
+    category: adrv9009-phy-b
+    dtype: string
+    default: "'manual'"
+    options: ["'manual'", "'slow_attack'"]
+    option_labels: ['Manual', 'Slow Attack']
+    hide: part
+
+-   id: rx3_en
+    label: RX3 Enabled
+    category: adrv9009-phy-b
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+
+-   id: gain3
+    label: Gain RX3 (dB)
+    category: adrv9009-phy-b
+    dtype: float
+    default: 10.0
+    hide: ${ ('part' if (gain_mode2 == 'manual') else 'all') }
+
+-   id: quad_tracking3
+    label: Quadrature Tracking RX3
+    category: adrv9009-phy-b
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: hd2_tracking3
+    label: HD2 Tracking RX3
+    category: adrv9009-phy-b
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: rx4_en
+    label: RX4 Enabled
+    category: adrv9009-phy-b
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+
+-   id: gain4
+    label: Gain RX4 (dB)
+    category: adrv9009-phy-b
+    dtype: float
+    default: 10.0
+    hide: ${ ('part' if (gain_mode2 == 'manual') else 'all') }
+
+-   id: quad_tracking4
+    label: Quadrature Tracking RX4
+    category: adrv9009-phy-b
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: hd2_tracking4
+    label: HD2 Tracking RX4
+    category: adrv9009-phy-b
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+documentation: |-
+    This is NAT-AMC-ZYNQUP-SDR4 GNURadio source block for receiving signals.
+    More information on how to use this block can be found in the user guide or the Github repository.
+
+outputs:
+-   domain: stream
+    dtype: complex
+    multiplicity: ${ sum([rx1_en, rx2_en, rx3_en, rx4_en]) }
+
+asserts:
+- ${ sum([rx1_en, rx2_en, rx3_en, rx4_en]) > 0 }
+
+templates:
+    imports: import nat
+    make: nat.nat_amc_zynqup_sdr_source_f32c(${uri}, ${samplerate}, [${rx1_en}, ${rx2_en},${rx3_en}, ${rx4_en}], ${buffer_size}, [${gain_mode1},${gain_mode2}], [${lo_frequency1},${lo_frequency2}], [${rx_qec_en1},${rx_qec_en2}], [${rx_phase_corr_en1},${rx_phase_corr_en2}], [${gain1},${gain2},${gain3},${gain4}], [${quad_tracking1},${quad_tracking2},${quad_tracking3},${quad_tracking4}], [${hd2_tracking1},${hd2_tracking2},${hd2_tracking3},${hd2_tracking4}])
+    callbacks:
+      - set_params(${samplerate}, [${gain_mode1},${gain_mode2}], [${lo_frequency1},${lo_frequency2}], [${rx_qec_en1},${rx_qec_en2}], [${rx_phase_corr_en1},${rx_phase_corr_en2}],[${gain1},${gain2},${gain3},${gain4}], [${quad_tracking1},${quad_tracking2},${quad_tracking3},${quad_tracking4}], [${hd2_tracking1},${hd2_tracking2},${hd2_tracking3},${hd2_tracking4}])
+
+file_format: 1

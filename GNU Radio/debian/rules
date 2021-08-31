@@ -1,0 +1,16 @@
+#!/usr/bin/make -f
+
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+
+%:
+	dh $@ --with python3
+
+override_dh_auto_configure:
+	dh_auto_configure -- -DLIB_SUFFIX=/$(DEB_HOST_MULTIARCH) -DPYTHON_EXECUTABLE=/usr/bin/python3
+
+override_dh_auto_install:
+	dh_auto_install
+	rm -f debian/gr-nat/usr/lib/python3/dist-packages/gnuradio/nat/*pyc
+	rm -f debian/gr-nat/usr/lib/python3/dist-packages/gnuradio/nat/*pyo
+override_dh_compress:
+	dh_compress -X.c -X.C

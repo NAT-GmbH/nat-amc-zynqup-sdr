@@ -1,0 +1,239 @@
+options:
+  parameters:
+    author: Thomas Florkowski
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: ''
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: qt_gui
+    hier_block_src_path: '.:'
+    id: cosine_transmission_sdr4
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: Cosine Transmission SDR4
+    window_size: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: buffer_size
+  id: variable
+  parameters:
+    comment: ''
+    value: '0x4000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [418, 22]
+    rotation: 0
+    state: enabled
+- name: period_samples
+  id: variable
+  parameters:
+    comment: ''
+    value: '32768'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [284, 11]
+    rotation: 0
+    state: true
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '7680000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [184, 12]
+    rotation: 0
+    state: enabled
+- name: analog_sig_source_x_0_0
+  id: analog_sig_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    amp: '1'
+    comment: ''
+    freq: '1000000'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    offset: '0'
+    phase: '0'
+    samp_rate: samp_rate
+    type: complex
+    waveform: analog.GR_COS_WAVE
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [122, 395]
+    rotation: 0
+    state: enabled
+- name: nat_amc_zynqup_sdr4_sink_0
+  id: nat_amc_zynqup_sdr4_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    attenuation1: '10.0'
+    attenuation2: '30.0'
+    attenuation3: '30.0'
+    attenuation4: '30.0'
+    buffer_size: '32768'
+    comment: ''
+    cyclic: 'False'
+    leak_tracking1: '0'
+    leak_tracking2: '0'
+    leak_tracking3: '0'
+    leak_tracking4: '0'
+    lo_frequency1: '2400000000'
+    lo_frequency2: '2400000000'
+    quad_tracking1: '0'
+    quad_tracking2: '0'
+    quad_tracking3: '0'
+    quad_tracking4: '0'
+    samplerate: '7680000'
+    tx1_en: '1'
+    tx2_en: '0'
+    tx3_en: '0'
+    tx4_en: '0'
+    tx_lol_en1: '1'
+    tx_lol_en2: '1'
+    tx_qec_en1: '1'
+    tx_qec_en2: '1'
+    uri: ip:192.168.1.160
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [702, 389]
+    rotation: 0
+    state: true
+- name: nat_amc_zynqup_sdr4_source_0
+  id: nat_amc_zynqup_sdr4_source
+  parameters:
+    affinity: ''
+    alias: ''
+    buffer_size: '32768'
+    comment: ''
+    gain1: '10.0'
+    gain2: '10.0'
+    gain3: '10.0'
+    gain4: '10.0'
+    gain_mode1: '''slow_attack'''
+    gain_mode2: '''manual'''
+    hd2_tracking1: '0'
+    hd2_tracking2: '0'
+    hd2_tracking3: '0'
+    hd2_tracking4: '0'
+    lo_frequency1: '2400000000'
+    lo_frequency2: '2400000000'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    quad_tracking1: '0'
+    quad_tracking2: '0'
+    quad_tracking3: '0'
+    quad_tracking4: '0'
+    rx1_en: '1'
+    rx2_en: '0'
+    rx3_en: '0'
+    rx4_en: '0'
+    rx_phase_corr_en1: '1'
+    rx_phase_corr_en2: '1'
+    rx_qec_en1: '1'
+    rx_qec_en2: '1'
+    samplerate: '7680000'
+    uri: ip:192.168.1.160
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [989, 399]
+    rotation: 0
+    state: true
+- name: qtgui_sink_x_0
+  id: qtgui_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    bw: samp_rate
+    comment: ''
+    fc: '0'
+    fftsize: '1024'
+    gui_hint: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: '"Send Signal"'
+    plotconst: 'True'
+    plotfreq: 'True'
+    plottime: 'True'
+    plotwaterfall: 'True'
+    rate: '10'
+    showports: 'False'
+    showrf: 'False'
+    type: complex
+    wintype: firdes.WIN_BLACKMAN_hARRIS
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [377, 263]
+    rotation: 0
+    state: enabled
+- name: qtgui_sink_x_1
+  id: qtgui_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    bw: samp_rate
+    comment: ''
+    fc: '2400000000'
+    fftsize: '1024'
+    gui_hint: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: '"Received Signal"'
+    plotconst: 'True'
+    plotfreq: 'True'
+    plottime: 'True'
+    plotwaterfall: 'True'
+    rate: '10'
+    showports: 'False'
+    showrf: 'False'
+    type: complex
+    wintype: firdes.WIN_BLACKMAN_hARRIS
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1419, 394]
+    rotation: 0
+    state: enabled
+
+connections:
+- [analog_sig_source_x_0_0, '0', nat_amc_zynqup_sdr4_sink_0, '0']
+- [analog_sig_source_x_0_0, '0', qtgui_sink_x_0, '0']
+- [nat_amc_zynqup_sdr4_source_0, '0', qtgui_sink_x_1, '0']
+
+metadata:
+  file_format: 1

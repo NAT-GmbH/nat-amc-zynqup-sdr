@@ -1,0 +1,6 @@
+'[NAT GmbH]':
+- 'AMC':
+  - nat_amc_zynqup_sdr8_sink
+  - nat_amc_zynqup_sdr8_source
+  - nat_amc_zynqup_sdr4_sink
+  - nat_amc_zynqup_sdr4_source

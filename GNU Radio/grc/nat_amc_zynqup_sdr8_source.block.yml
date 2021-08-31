@@ -1,0 +1,446 @@
+id: nat_amc_zynqup_sdr8_source
+label: Zynqup SDR8 Source
+flags: [ python, throttle ]
+
+parameters:
+-   id: uri
+    label: IIO context URI
+    dtype: string
+    default: 'local:'
+
+-   id: samplerate
+    label: Sample Rate
+    dtype: int
+    default: '245760000'
+    options: ['245760000', '30720000', '15360000', '7680000', '3840000', '1920000']
+    option_labels: ['245760000', '30720000', '15360000', '7680000', '3840000', '1920000']
+
+-   id: buffer_size
+    label: Buffer size
+    dtype: int
+    default: 0x8000
+
+-   id: lo_frequency1
+    category: adrv9009-phy
+    label: LO Frequency
+    dtype: int
+    default: 2400000000
+    hide: part
+
+-   id: rx_qec_en1
+    label: Calibrate RX QEC
+    category: adrv9009-phy
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: rx_phase_corr_en1
+    label: Calibrate RX PHASE CORR
+    category: adrv9009-phy
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+
+-   id: gain_mode1
+    label: Gain Mode RX1/2
+    category: adrv9009-phy
+    dtype: string
+    default: "'manual'"
+    options: ["'manual'", "'slow_attack'"]
+    option_labels: ['Manual', 'Slow Attack']
+    hide: part
+
+
+-   id: rx1_en
+    label: RX1 Enabled
+    category: adrv9009-phy
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+
+-   id: gain1
+    label: Gain RX1 (dB)
+    category: adrv9009-phy
+    dtype: float
+    default: 10.0
+    hide: ${ ('part' if (gain_mode1 == 'manual') else 'all') }
+
+-   id: quad_tracking1
+    label: Quadrature Tracking RX1
+    category: adrv9009-phy
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: hd2_tracking1
+    label: HD2 Tracking RX1
+    category: adrv9009-phy
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: rx2_en
+    label: RX2 Enabled
+    category: adrv9009-phy
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+
+-   id: gain2
+    label: Gain RX2 (dB)
+    category: adrv9009-phy
+    dtype: float
+    default: 10.0
+    hide: ${ ('part' if (gain_mode1 == 'manual') else 'all') }
+
+-   id: quad_tracking2
+    label: Quadrature Tracking RX2
+    category: adrv9009-phy
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: hd2_tracking2
+    label: HD2 Tracking RX2
+    category: adrv9009-phy
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: lo_frequency2
+    category: adrv9009-phy-b
+    label: LO Frequency
+    dtype: int
+    default: 2400000000
+    hide: part
+
+-   id: rx_qec_en2
+    label: Calibrate RX QEC
+    category: adrv9009-phy-b
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: rx_phase_corr_en2
+    label: Calibrate RX PHASE CORR
+    category: adrv9009-phy-b
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: gain_mode2
+    label: Gain Mode RX3/4
+    category: adrv9009-phy-b
+    dtype: string
+    default: "'manual'"
+    options: ["'manual'", "'slow_attack'"]
+    option_labels: ['Manual', 'Slow Attack']
+    hide: part
+
+-   id: rx3_en
+    label: RX3 Enabled
+    category: adrv9009-phy-b
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+
+-   id: gain3
+    label: Gain RX3 (dB)
+    category: adrv9009-phy-b
+    dtype: float
+    default: 10.0
+    hide: ${ ('part' if (gain_mode2 == 'manual') else 'all') }
+
+-   id: quad_tracking3
+    label: Quadrature Tracking RX3
+    category: adrv9009-phy-b
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: hd2_tracking3
+    label: HD2 Tracking RX3
+    category: adrv9009-phy-b
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: rx4_en
+    label: RX4 Enabled
+    category: adrv9009-phy-b
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+
+-   id: gain4
+    label: Gain RX4 (dB)
+    category: adrv9009-phy-b
+    dtype: float
+    default: 10.0
+    hide: ${ ('part' if (gain_mode2 == 'manual') else 'all') }
+
+-   id: quad_tracking4
+    label: Quadrature Tracking RX4
+    category: adrv9009-phy-b
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: hd2_tracking4
+    label: HD2 Tracking RX4
+    category: adrv9009-phy-b
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+
+-   id: lo_frequency3
+    category: adrv9009-phy-c
+    label: LO Frequency
+    dtype: int
+    default: 2400000000
+    hide: part
+
+-   id: rx_qec_en3
+    label: Calibrate RX QEC
+    category: adrv9009-phy-c
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: rx_phase_corr_en3
+    label: Calibrate RX PHASE CORR
+    category: adrv9009-phy-c
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: gain_mode3
+    label: Gain Mode RX5/6
+    category: adrv9009-phy-c
+    dtype: string
+    default: "'manual'"
+    options: ["'manual'", "'slow_attack'"]
+    option_labels: ['Manual', 'Slow Attack']
+    hide: part
+
+
+-   id: rx5_en
+    label: RX5 Enabled
+    category: adrv9009-phy-c
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+
+-   id: gain5
+    label: Gain RX5 (dB)
+    category: adrv9009-phy-c
+    dtype: float
+    default: 10.0
+    hide: ${ ('part' if (gain_mode3 == 'manual') else 'all') }
+
+-   id: quad_tracking5
+    label: Quadrature Tracking RX5
+    category: adrv9009-phy-c
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: hd2_tracking5
+    label: HD2 Tracking R5
+    category: adrv9009-phy-c
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: rx6_en
+    label: RX6 Enabled
+    category: adrv9009-phy-c
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+
+-   id: gain6
+    label: Gain RX6 (dB)
+    category: adrv9009-phy-c
+    dtype: float
+    default: 10.0
+    hide: ${ ('part' if (gain_mode3 == 'manual') else 'all') }
+
+-   id: quad_tracking6
+    label: Quadrature Tracking RX6
+    category: adrv9009-phy-c
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: hd2_tracking6
+    label: HD2 Tracking RX6
+    category: adrv9009-phy-c
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+
+-   id: lo_frequency4
+    category: adrv9009-phy-d
+    label: LO Frequency
+    dtype: int
+    default: 2400000000
+    hide: part
+
+-   id: rx_qec_en4
+    label: Calibrate RX QEC
+    category: adrv9009-phy-d
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: rx_phase_corr_en4
+    label: Calibrate RX PHASE CORR
+    category: adrv9009-phy-d
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: gain_mode4
+    label: Gain Mode RX7/8
+    category: adrv9009-phy-d
+    dtype: string
+    default: "'manual'"
+    options: ["'manual'", "'slow_attack'"]
+    option_labels: ['Manual', 'Slow Attack']
+    hide: part
+
+-   id: rx7_en
+    label: RX7 Enabled
+    category: adrv9009-phy-d
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+
+-   id: gain7
+    label: Gain RX7 (dB)
+    category: adrv9009-phy-d
+    dtype: float
+    default: 10.0
+    hide: ${ ('part' if (gain_mode4 == 'manual') else 'all') }
+
+-   id: quad_tracking7
+    label: Quadrature Tracking RX7
+    category: adrv9009-phy-d
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: hd2_tracking7
+    label: HD2 Tracking RX7
+    category: adrv9009-phy-d
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: rx8_en
+    label: RX2 Enabled
+    category: adrv9009-phy-d
+    dtype: int
+    default: '1'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+
+-   id: gain8
+    label: Gain RX8 (dB)
+    category: adrv9009-phy-d
+    dtype: float
+    default: 10.0
+    hide: ${ ('part' if (gain_mode4 == 'manual') else 'all') }
+
+-   id: quad_tracking8
+    label: Quadrature Tracking RX8
+    category: adrv9009-phy-d
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+-   id: hd2_tracking8
+    label: HD2 Tracking RX8
+    category: adrv9009-phy-d
+    dtype: int
+    default: '0'
+    options: ['0','1']
+    option_labels: ['False', 'True']
+    hide: part
+
+documentation: |-
+    This is NAT-AMC-ZYNQUP-SDR8 GNURadio source block for receiving signals.
+    More information on how to use this block can be found in the user guide or the Github repository.
+
+outputs:
+-   domain: stream
+    dtype: complex
+    multiplicity: ${ sum([rx1_en, rx2_en, rx3_en, rx4_en, rx5_en, rx6_en, rx7_en,rx8_en]) }
+
+asserts:
+- ${ sum([rx1_en, rx2_en, rx3_en, rx4_en, rx5_en, rx6_en, rx7_en,rx8_en]) > 0 }
+
+templates:
+    imports: import nat
+    make: nat.nat_amc_zynqup_sdr_source_f32c(${uri}, ${samplerate}, [${rx1_en}, ${rx2_en},${rx3_en}, ${rx4_en},${rx5_en}, ${rx6_en},${rx7_en}, ${rx8_en}], ${buffer_size}, [${gain_mode1},${gain_mode2},${gain_mode3},${gain_mode4}], [${lo_frequency1},${lo_frequency2},${lo_frequency3},${lo_frequency4}], [${rx_qec_en1},${rx_qec_en2},${rx_qec_en3},${rx_qec_en4}], [${rx_phase_corr_en1},${rx_phase_corr_en2},${rx_phase_corr_en3},${rx_phase_corr_en4}], [${gain1},${gain2},${gain3},${gain4},${gain5},${gain6},${gain7},${gain8}], [${quad_tracking1},${quad_tracking2},${quad_tracking3},${quad_tracking4},${quad_tracking5},${quad_tracking6},${quad_tracking7},${quad_tracking8}], [${hd2_tracking1},${hd2_tracking2},${hd2_tracking3},${hd2_tracking4},${hd2_tracking5},${hd2_tracking6},${hd2_tracking7},${hd2_tracking8}])
+    callbacks:
+      - set_params(${samplerate}, [${gain_mode1},${gain_mode2},${gain_mode3},${gain_mode4}], [${lo_frequency1},${lo_frequency2},${lo_frequency3},${lo_frequency4}], [${rx_qec_en1},${rx_qec_en2},${rx_qec_en3},${rx_qec_en4}], [${rx_phase_corr_en1},${rx_phase_corr_en2},${rx_phase_corr_en3},${rx_phase_corr_en4}],[${gain1},${gain2},${gain3},${gain4},${gain5},${gain6},${gain7},${gain8}], [${quad_tracking1},${quad_tracking2},${quad_tracking3},${quad_tracking4},${quad_tracking5},${quad_tracking6},${quad_tracking7},${quad_tracking8}], [${hd2_tracking1},${hd2_tracking2},${hd2_tracking3},${hd2_tracking4},${hd2_tracking5},${hd2_tracking6},${hd2_tracking7},${hd2_tracking8}])
+
+file_format: 1

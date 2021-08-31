@@ -1,0 +1,39 @@
+Source: gr-nat
+Section: libs
+Priority: optional
+Maintainer: Thomas Florkowski <thomas.florkowski@nateurope.com>
+Build-Depends: cmake,
+               debhelper (>= 12),
+	           dh-python,
+               doxygen,
+               gnuradio-dev (>= 3.8),
+               libcppunit-dev,
+	           libgmp-dev,
+               libiio-dev (>= 0.18),
+	           liborc-0.4-dev,
+               pkg-config,
+	           python3-dev,
+               swig
+Standards-Version: 4.5.0
+
+Package: gr-nat
+Section: libdevel
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${python3:Depends}, libgnuradio-nat1 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Description: NAT blocks for GnuRadio
+ gr-nat contains several new blocks for GNU Radio that can be used to stream samples from and to N.A.T. GmbH devices. 
+ .
+ These new GNU Radio blocks are built around ADI’s libiio library, which concentrates most of the complexity and has built-in support for data streaming over the network.
+ .
+ This package contains the development files.
+
+Package: libgnuradio-nat1
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: N.A.T. blocks for GnuRadio (runtime library)
+ gr-nat contains several new blocks for GNU Radio that can be used to stream samples from and to N.A.T. GmbH devices. 
+ .
+ These new GNU Radio blocks are built around ADI’s libiio library, which concentrates most of the complexity and has built-in support for data streaming over the network.
+ .
+ This package contains the shared library.
