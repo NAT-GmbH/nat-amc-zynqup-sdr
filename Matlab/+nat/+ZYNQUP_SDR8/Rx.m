@@ -481,6 +481,8 @@ classdef Rx < nat.ZYNQUP_SDR8.Base & adi.common.Rx
             obj.setAttributeBool('voltage0','powerdown',false,true,'adrv9009-phy-d');
             obj.setAttributeBool('voltage1','powerdown',false,true,'adrv9009-phy-d');
 
+            obj.setAttributeLongLong('voltage0_i','sampling_frequency',obj.SamplingFrequency,false,obj.devName);
+
             obj.setAttributeRAW('voltage0','gain_control_mode',obj.GainControlModePhy,false,'adrv9009-phy');
             obj.setAttributeRAW('voltage0','gain_control_mode',obj.GainControlModePhyB,false,'adrv9009-phy-b');
             obj.setAttributeRAW('voltage0','gain_control_mode',obj.GainControlModePhyC,false,'adrv9009-phy-c');

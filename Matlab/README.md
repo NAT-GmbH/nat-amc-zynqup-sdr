@@ -101,9 +101,14 @@ If you want to set the parameter for a different channel change the number at th
 * Default Value: 1
 * Can be changed during run time: No
 
-###### SamplesPerFrame=524288;
+###### SamplesPerFrame
 * Default Value: 32768
 * Max Value for SA Mode: 524288
+* Can be changed during run time: No
+
+###### SamplingFrequency
+* Default Value: 245.76e6
+* Available Values: 245760000, 30720000, 15360000, 7680000, 3840000
 * Can be changed during run time: No
 
 ###### uri
@@ -190,17 +195,22 @@ undefined data.
 * Default Value: 1
 * Can be changed during run time: No
 
-###### SamplesPerFrame;
+###### SamplesPerFrame
 * Default Value: 32768
 * Max Value for SA Mode: 524288
 * Can be changed during run time: No
 
-###### DataSource;
+###### SamplingFrequency
+* Default Value: 245.76e6
+* Available Values: 245760000, 30720000, 15360000, 7680000, 3840000
+* Can be changed during run time: No
+
+###### DataSource
 * Default Value: DMA
 * Available Values: DMA, DDS
 * Can be changed during run time: No
 
-###### EnableCyclicBuffers;
+###### EnableCyclicBuffers
 * Enables Cyclic Buffers to continuously send the content in the Buffer
 * Default Value: false
 * Can be changed during run time: No

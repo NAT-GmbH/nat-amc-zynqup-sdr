@@ -271,6 +271,8 @@ classdef Tx < nat.ZYNQUP_SDR4.Base & adi.common.Tx
             obj.setAttributeBool('voltage1','powerdown',false,true,'adrv9009-phy');
             obj.setAttributeBool('voltage0','powerdown',false,true,'adrv9009-phy-b');
             obj.setAttributeBool('voltage1','powerdown',false,true,'adrv9009-phy-b');
+            
+            obj.setAttributeLongLong('voltage0','sampling_frequency',obj.SamplingFrequency,true,obj.devName);
 
             obj.setAttributeLongLong('altvoltage0','frequency',obj.CenterFrequencyPhy ,true,'adrv9009-phy');
             obj.setAttributeLongLong('altvoltage0','frequency',obj.CenterFrequencyPhyB ,true,'adrv9009-phy-b');

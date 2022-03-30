@@ -138,6 +138,7 @@ classdef Rx < nat.ZYNQUP_SDR4.Base & adi.common.Rx
             coder.allowpcode('plain');
             obj = obj@nat.ZYNQUP_SDR4.Base(varargin{:});
         end
+
 %--------------------GainControlMode---------------------------------------------------------
         % Check GainControlMode
         function set.GainControlModePhy(obj, value)
@@ -310,6 +311,8 @@ classdef Rx < nat.ZYNQUP_SDR4.Base & adi.common.Rx
             obj.setAttributeBool('voltage1','powerdown',false,true,'adrv9009-phy');
             obj.setAttributeBool('voltage0','powerdown',false,true,'adrv9009-phy-b');
             obj.setAttributeBool('voltage1','powerdown',false,true,'adrv9009-phy-b');
+
+            obj.setAttributeLongLong('voltage0_i','sampling_frequency',obj.SamplingFrequency,false,obj.devName);
 
             obj.setAttributeRAW('voltage0','gain_control_mode',obj.GainControlModePhy,false,'adrv9009-phy');
             obj.setAttributeRAW('voltage0','gain_control_mode',obj.GainControlModePhyB,false,'adrv9009-phy-b');

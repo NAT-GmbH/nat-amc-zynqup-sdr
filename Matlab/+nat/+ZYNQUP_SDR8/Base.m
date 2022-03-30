@@ -51,6 +51,9 @@ classdef (Abstract, Hidden = true) Base < ...
         %   integer from 2 to 16,777,216. Using values less than 3660 can
         %   yield poor performance.
         SamplesPerFrame = 2^15;
+        % Set sampling frequency to enable/disable interpolation
+        % Only certain values corresponding to implemented filters are allowed
+        SamplingFrequency = 245.76e6;
     end
 
     properties (Hidden, Constant)
